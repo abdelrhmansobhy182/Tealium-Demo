@@ -1,0 +1,14 @@
+# Build files
+build/
+.gradle/
+*.class
+*.bin
+*.lock
+*.html
+
+# IntelliJ / IDE settings
+.idea/
+*.iml
+out/
+
+
