@@ -1,20 +1,20 @@
 package frontend.tests;
-
-import com.aventstack.extentreports.ExtentTest;
 import frontend.utilities.ElementUtilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-import reports.ExtentTestNGListener;
 
+@Listeners(reports.ExtentTestListener.class)
 public class BaseTest {
-
     protected WebDriver driver;
     protected ElementUtilities elementUtilities;
     protected Dotenv dotenv = Dotenv.load();
+
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     @BeforeMethod
     public void setUp() {
@@ -22,14 +22,8 @@ public class BaseTest {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(dotenv.get("WEBSITE_URL"));
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-
-        WebDriver driver = new ChromeDriver(options);
         elementUtilities = new ElementUtilities(driver);
+
     }
 
     @AfterMethod

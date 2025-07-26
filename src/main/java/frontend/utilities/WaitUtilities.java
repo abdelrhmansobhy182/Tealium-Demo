@@ -12,7 +12,7 @@ import java.time.Duration;
 public class WaitUtilities {
 
     private final WebDriver driver;
-    private final int DEFAULT_TIMEOUT = 15;
+    private final int DEFAULT_TIMEOUT = 10;
 
     public WaitUtilities(WebDriver driver) {
         this.driver = driver;
@@ -27,6 +27,14 @@ public class WaitUtilities {
     public WebElement waitUntilClickable(By by) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
         return wait.until(ExpectedConditions.elementToBeClickable(by));
+    }
+
+    public void waitUntilPageIsLoaded() {
+        new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT)).until(
+                webDriver -> ((JavascriptExecutor) webDriver)
+                        .executeScript("return document.readyState")
+                        .equals("complete")
+        );
     }
 
 

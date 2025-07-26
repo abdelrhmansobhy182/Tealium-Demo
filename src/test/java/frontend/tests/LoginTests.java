@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import reports.ExtentTestManager;
 
 public class LoginTests extends BaseTest{
     HomePage homePage;
@@ -29,6 +30,7 @@ public class LoginTests extends BaseTest{
         loginPage.enterPassword(user.getPassword());
         loginPage.clickOnSubmitButton();
         Assert.assertEquals(dotenv.get("ACCOUNT_URL"),elementUtilities.getPageURL());
+        //TODO Assert The user name displayed in Success Message After implement API
     }
 
     @Test

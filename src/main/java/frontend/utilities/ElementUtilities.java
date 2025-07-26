@@ -43,16 +43,6 @@ public class ElementUtilities {
         select.selectByVisibleText(visibleText);
     }
 
-    public void selectByValue(By dropdownElement, String value) {
-        Select select = new Select(waitUtilities.waitUntilVisible(dropdownElement));
-        select.selectByValue(value);
-    }
-
-    public void selectByIndex(By dropdownElement, int index) {
-        Select select = new Select(waitUtilities.waitUntilVisible(dropdownElement));
-        select.selectByIndex(index);
-    }
-
     public boolean isDisplayed(By by) {
         try {
             return waitUtilities.waitUntilVisible(by).isDisplayed();
@@ -83,7 +73,7 @@ public class ElementUtilities {
     }
 
     public String getPageURL() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(500);
         return driver.getCurrentUrl();
     }
 

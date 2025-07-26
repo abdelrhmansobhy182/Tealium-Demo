@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(reports.ExtentTestNGListener.class)
 public class RegisterTests extends BaseTest{
 
     HomePage homePage;
