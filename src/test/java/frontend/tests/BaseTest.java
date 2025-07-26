@@ -4,6 +4,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
 @Listeners(reports.ExtentTestListener.class)
@@ -19,11 +20,17 @@ public class BaseTest {
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new"); // شغل المتصفح في وضع headless
+        options.addArguments("--no-sandbox"); // مهم جدًا في GitHub Actions
+        options.addArguments("--disable-dev-shm-usage");
+
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(dotenv.get("WEBSITE_URL"));
-        elementUtilities = new ElementUtilities(driver);
 
+        elementUtilities = new ElementUtilities(driver);
     }
 
     @AfterMethod
