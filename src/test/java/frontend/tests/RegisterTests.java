@@ -1,11 +1,10 @@
 package frontend.tests;
 
-import frontend.Factories.UserFactory;
+import frontend.factories.UserFactory;
 import frontend.pages.HomePage;
 import frontend.pages.RegisterPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 public class RegisterTests extends BaseTest{

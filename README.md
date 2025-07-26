@@ -14,7 +14,7 @@ This project is a **TestNG-based UI automation framework** built using the **Pag
 │   │   ├── java
 │   │   │   └── frontend
 │   │   │       ├── enums
-│   │   │       ├── Factories
+│   │   │       ├── factories
 │   │   │       ├── helpers
 │   │   │       ├── models
 │   │   │       ├── pages

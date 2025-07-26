@@ -1,4 +1,4 @@
-package frontend.Factories;
+package frontend.factories;
 
 import com.github.javafaker.Faker;
 

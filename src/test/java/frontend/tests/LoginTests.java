@@ -1,16 +1,13 @@
 package frontend.tests;
 
-import frontend.Factories.UserFactory;
+import frontend.factories.UserFactory;
 import frontend.helpers.RegisterHelper;
 import frontend.models.User;
 import frontend.pages.HomePage;
 import frontend.pages.LoginPage;
-import frontend.pages.RegisterPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import reports.ExtentTestManager;
 
 public class LoginTests extends BaseTest{
     HomePage homePage;
