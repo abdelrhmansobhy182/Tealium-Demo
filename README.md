@@ -101,9 +101,27 @@ This project is a **TestNG-based UI automation framework** built using the **Pag
 
 ---
 
+## 🔧 Upcoming Improvements
+
+Some enhancements planned for the next iterations of this project:
+
+- 🗂 **Use JSON files for data providing**  
+  Replace hardcoded test data with structured and maintainable JSON files.
+
+- 🔄 **Use API-based helper methods for test data preparation**  
+  Create users or products directly via API to speed up setup and reduce UI dependencies.
+
+- 📊 **Include test run summary in reports**  
+  Add environment info and API response logs to ExtentReports.
+  
+  ---
+
+
 ## 📄 Reports
 
 Test reports are generated using **ExtentReports** with rich HTML output.
 
 > File: `test-output/extent-report.html`
+
+
 
