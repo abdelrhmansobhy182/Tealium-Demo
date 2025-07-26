@@ -59,8 +59,7 @@ This project is a **TestNG-based UI automation framework** built using the **Pag
 
 1. **Clone the project**:
    ```bash
-   git clone https://github.com/your-username/frontend-automation.git
-   cd frontend-automation
+   git clone https://github.com/abdelrhmansobhy182/Tealium-Demo.git
    ```
 
 2. **Configure environment variables** 
