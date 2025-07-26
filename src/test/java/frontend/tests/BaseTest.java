@@ -22,9 +22,7 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
-        options.addArguments("--window-size=1920,1080");
-
+//        options.addArguments("--headless=new");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.get(dotenv.get("WEBSITE_URL"));
