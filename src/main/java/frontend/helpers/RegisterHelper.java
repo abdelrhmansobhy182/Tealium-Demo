@@ -16,6 +16,8 @@ public class RegisterHelper {
         return User.builder()
                 .email(dotenv.get("EMAIL_TEST"))
                 .password(dotenv.get("PASSWORD_TEST"))
+                .firstName("abdelrahman")
+                .lastName("sobhy")
                 .build();
     }
 }

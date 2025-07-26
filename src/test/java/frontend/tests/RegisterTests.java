@@ -142,9 +142,6 @@ public class RegisterTests extends BaseTest{
         Assert.assertTrue(registerPage.isConfirmPasswordMismatchErrorMessageDisplayed());
     }
 
-
-
-
     private void initializePageObjects(){
         homePage = new HomePage(elementUtilities);
         registerPage = new RegisterPage(elementUtilities);

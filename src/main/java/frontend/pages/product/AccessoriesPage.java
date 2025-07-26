@@ -17,29 +17,25 @@ public class AccessoriesPage extends DashboardPage{
     private final By shoesColor= By.cssSelector("#configurable_swatch_color li:first-of-type");
     private final By addToCartButton = By.className("add-to-cart-buttons");
 
-
     public void clickOnAddToCartButton(){
         elementUtilities.clickElement(addToCartButton);
     }
-
     public void selectShoesSize(){
         elementUtilities.clickElement(shoesSize);
     }
     public void selectShoesColor(){
         elementUtilities.clickElement(shoesColor);
     }
-    public List<WebElement> getItemPrices(){
-        return elementUtilities.getElements(itemPrices);
-    }
-
     public String getProductName(){
         return elementUtilities.getText(productName);
     }
-
     public Boolean isSizeSelected(){
         return elementUtilities.isSelected(shoesSize);
     }
     public Boolean isColorSelected(){
         return elementUtilities.isSelected(shoesColor);
+    }
+    public List<WebElement> getItemPrices(){
+        return elementUtilities.getElements(itemPrices);
     }
 }

@@ -59,6 +59,8 @@ public class RegisterPage {
         elementUtilities.scrollToElement(rememberMeCheckBox);
         elementUtilities.checkBox(rememberMeCheckBox);
     }
+
+    // Messages Assertion
     public Boolean isRegistrationSuccessMessageDisplayed(){
         return elementUtilities.isDisplayed(registrationSuccessMessage);
     }

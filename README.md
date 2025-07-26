@@ -51,13 +51,11 @@ This project is a **TestNG-based UI automation framework** built using the **Pag
 ### ✅ Pre-requisites
 
 - Java 17 or later
-- Gradle
 - Chrome browser
+- Gradle
 - Docker
 
 ---
-
-### 🔄 Without Docker
 
 1. **Clone the project**:
    ```bash
@@ -75,21 +73,6 @@ This project is a **TestNG-based UI automation framework** built using the **Pag
 4. **View the report**:
    After execution, open `test-output/extent-report.html`.
 
----
-
-### 🐳 With Docker
-
-> Ensure Docker is installed and the Docker daemon is running.
-
-1. **Build the Docker image**:
-   ```bash
-   docker build -t selenium-tests .
-   ```
-
-2. **Run the tests inside Docker**:
-   ```bash
-   docker run --rm selenium-tests
-   ```
 ---
 
 ## 🧠 Design Patterns Used

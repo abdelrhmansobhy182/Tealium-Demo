@@ -17,8 +17,6 @@ public class DashboardPage {
     private final By shoesCategory = By.cssSelector("li.nav-3-3 > a");
     private final By sortByDropDown = By.xpath("(//select[@title='Sort By'])[1]");
 
-
-
     public DashboardPage(ElementUtilities elementUtilities) {
         this.elementUtilities = elementUtilities;
     }
@@ -26,27 +24,17 @@ public class DashboardPage {
     public void clickOnShoesCategory(){
         elementUtilities.clickElement(shoesCategory);
     }
-
     public void clickOnProductByName(String productName) {
         By by = By.xpath(String.format("//h2[@class='product-name']/a[contains(text(), '%s')]", productName));
         elementUtilities.scrollToElement(by);
         elementUtilities.clickElement(by);
     }
-
-
-
     public void hoverOverAccessoriesMenu(){
         elementUtilities.hoverOverElement(accessoriesMenu);
     }
-
-    public Boolean isAccessoriesDropDownDisplayed(){
-        return elementUtilities.isDisplayed(accessoriesDropdown);
-    }
-
     public void sortItemsBy(SortCategory sortBy){
         elementUtilities.selectByVisibleText(sortByDropDown, String.valueOf(sortBy));
     }
-
     public Boolean areItemPricesSorted(List<WebElement> list) {
         List<Double> prices = new ArrayList<>();
         for (WebElement element : list) {
@@ -60,5 +48,7 @@ public class DashboardPage {
 
         return prices.equals(sortedPrices);
     }
-
+    public Boolean isAccessoriesDropDownDisplayed(){
+        return elementUtilities.isDisplayed(accessoriesDropdown);
+    }
 }

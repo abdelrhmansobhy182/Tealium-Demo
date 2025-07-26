@@ -8,6 +8,7 @@ import frontend.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import reports.ExtentTestManager;
 
 public class LoginTests extends BaseTest{
     HomePage homePage;
@@ -23,26 +24,38 @@ public class LoginTests extends BaseTest{
 
     @Test
     public void verifyThatTheUserCanLoginWithValidCredentials() throws InterruptedException {
+        ExtentTestManager.log("Entering valid email: " + user.getEmail());
         loginPage.enterEmail(user.getEmail());
+        ExtentTestManager.log("Entering valid password: ");
         loginPage.enterPassword(user.getPassword());
+        ExtentTestManager.log("Click on submit button");
         loginPage.clickOnSubmitButton();
+        ExtentTestManager.log("Verifying that the user is navigated to the account page");
         Assert.assertEquals(dotenv.get("ACCOUNT_URL"),elementUtilities.getPageURL());
-        //TODO Assert The user name displayed in Success Message After implement API
+        Assert.assertTrue(loginPage.getHelloMessageText().contains(user.getFullName()));
     }
 
     @Test
     public void verifyThatTheUserCanNotLoginWithNonExistEmail(){
+        ExtentTestManager.log("Entering non exist email: " + user.getEmail());
         loginPage.enterEmail(UserFactory.generateRandomEmail());
+        ExtentTestManager.log("Entering password");
         loginPage.enterPassword(user.getPassword());
+        ExtentTestManager.log("Click on submit button");
         loginPage.clickOnSubmitButton();
+        ExtentTestManager.log("Verifying that the error message is displayed");
         Assert.assertTrue(loginPage.isInvalidLoginMessageDisplayed());
     }
 
     @Test
     public void verifyThatTheUserCanNotLoginWithInValidPassword(){
+        ExtentTestManager.log("Entering valid email: " + user.getEmail());
         loginPage.enterEmail(user.getEmail());
+        ExtentTestManager.log("Entering invalid password");
         loginPage.enterPassword("000000");
+        ExtentTestManager.log("Click on submit button");
         loginPage.clickOnSubmitButton();
+        ExtentTestManager.log("Verifying that the error message is displayed");
         Assert.assertTrue(loginPage.isInvalidLoginMessageDisplayed());
     }
 
