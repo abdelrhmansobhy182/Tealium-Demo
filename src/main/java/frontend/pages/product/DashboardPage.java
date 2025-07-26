@@ -1,24 +1,22 @@
-package frontend.pages;
+package frontend.pages.product;
 
 import frontend.enums.SortCategory;
 import frontend.utilities.ElementUtilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DashboardPage {
 
-    private final ElementUtilities elementUtilities;
+    protected ElementUtilities elementUtilities;
     private final By accessoriesMenu = By.cssSelector("li.level0.nav-3.parent");
     private final By accessoriesDropdown = By.cssSelector("li.level0.nav-3.parent.menu-active");
     private final By shoesCategory = By.cssSelector("li.nav-3-3 > a");
     private final By sortByDropDown = By.xpath("(//select[@title='Sort By'])[1]");
-    private final By itemPrices = By.className("regular-price");
-    private final By productName = By.cssSelector("div.product-name > span.h1");
-    private final By shoesSize = By.cssSelector("#configurable_swatch_shoe_size li:first-of-type");
-    private final By shoesColor= By.cssSelector("#configurable_swatch_color li:first-of-type");
-    private final By addToCartButton = By.className("add-to-cart-buttons");
+
 
 
     public DashboardPage(ElementUtilities elementUtilities) {
@@ -30,21 +28,12 @@ public class DashboardPage {
     }
 
     public void clickOnProductByName(String productName) {
-        By by = By.xpath(String.format("//a[text()='%s']", productName));
+        By by = By.xpath(String.format("//h2[@class='product-name']/a[contains(text(), '%s')]", productName));
         elementUtilities.scrollToElement(by);
         elementUtilities.clickElement(by);
     }
 
-    public void clickOnAddToCartButton(){
-        elementUtilities.clickElement(addToCartButton);
-    }
 
-    public void selectShoesSize(){
-        elementUtilities.clickElement(shoesSize);
-    }
-    public void selectShoesColor(){
-        elementUtilities.clickElement(shoesColor);
-    }
 
     public void hoverOverAccessoriesMenu(){
         elementUtilities.hoverOverElement(accessoriesMenu);
@@ -58,20 +47,18 @@ public class DashboardPage {
         elementUtilities.selectByVisibleText(sortByDropDown, String.valueOf(sortBy));
     }
 
-    public  List<WebElement> getItemPrices(){
-        return elementUtilities.getElements(itemPrices);
-    }
+    public Boolean areItemPricesSorted(List<WebElement> list) {
+        List<Double> prices = new ArrayList<>();
+        for (WebElement element : list) {
+            String priceText = element.getText().replace("$", "")
+                    .replace(",", "").trim();
+            prices.add(Double.parseDouble(priceText));
+        }
 
-    public String getProductName(){
-        return elementUtilities.getText(productName);
-    }
+        List<Double> sortedPrices = new ArrayList<>(prices);
+        Collections.sort(sortedPrices);
 
-    public Boolean isSizeSelected(){
-        return elementUtilities.isSelected(shoesSize);
-    }
-
-    public Boolean isColorSelected(){
-        return elementUtilities.isSelected(shoesColor);
+        return prices.equals(sortedPrices);
     }
 
 }

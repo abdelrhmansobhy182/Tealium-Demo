@@ -24,6 +24,13 @@ public class LoginPage {
     public void clickOnSubmitButton(){
         elementUtilities.clickElement(submitButton);
     }
+
+    // We can use one method to Login
+    public void login(String email, String password){
+        elementUtilities.typeText(emailField,email);
+        elementUtilities.typeText(passwordField,password);
+        elementUtilities.clickElement(submitButton);
+    }
     public Boolean isInvalidLoginMessageDisplayed(){
         return elementUtilities.isDisplayed(invalidLoginMessage);
     }
